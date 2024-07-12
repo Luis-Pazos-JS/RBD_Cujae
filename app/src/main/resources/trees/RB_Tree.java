@@ -71,6 +71,40 @@ public class RB_Tree<T extends Comparable<T>>{
             return search(node.getRight(), key);
 
     }
+    private void delete(RB_Node<T> node, T key){
+        RB_Node<T> z = TNull;
+        RB_Node<T> x, y;
+
+        while (node != TNull) {
+            if (node.getValue().equals(key)) {
+                z = node;
+            }
+    
+            if (node.getValue().compareTo(key) <= 0) {
+                node = node.getRight();
+            } else {
+                node = node.getLeft();
+            }
+            if (z == TNull) {
+                System.out.println("No se ha encontrado en el arbol"); // Si no encontramos el nodo, mostramos un mensaje
+                return;
+            }
+        }
+        y = z;
+        COLORNODE yOriginalColor = y.getColor();
+        if (z.getLeft() != TNull && z.getRight() != TNull) {
+            
+        }
+
+
+    }
+    private RB_Node<T> minimum(RB_Node<T> node) {
+        while (node.getLeft() != TNull) {
+            node = node.getLeft();
+        }
+        return node;
+    }
+
     private void replace_branch(RB_Node<T> u, RB_Node<T> v) {
         if (u.getFather() == null)
             root = v;
